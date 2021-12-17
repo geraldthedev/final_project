@@ -1,0 +1,17 @@
+{% extends "home.html" %}
+{% block title %}New Post{% endblock %}
+{% block head %}
+<link rel="stylesheet" href="/static/style.css" />
+{% endblock %}
+{% block content %}
+<div class="new_post">
+    <form action="/new_post" method="post">
+        Date: <input type="date" name="date" id="date">
+        Title: <input type="text" name="title" id="title">
+        <textarea name="post" id="" cols="30" rows="10"></textarea>
+        <button  type="submit">Post</button>
+    </form>
+    <a href="/dashboard">Back to home</a> 
+</div>
+
+{% endblock %}

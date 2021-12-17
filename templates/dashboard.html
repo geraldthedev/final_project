@@ -1,0 +1,39 @@
+{% extends "home.html" %}
+{% block title %}Dashboard{% endblock %}
+{% block head %}
+<link rel="stylesheet" href="/static/style.css" />
+{% endblock %}
+{% block content %}
+<h1>Dashboard</h1>
+<form action="/logout" method="post">
+    <button type="submit">Logout</button>
+</form>
+<table>
+    <tr>
+        <tr>
+            <th>Title</th>
+            <th>Post</th>
+            <th>Date Posted</th>
+            <th>Author</th>
+            <th>Edit</th>
+        </tr>
+        
+            {% for post in posts %}
+            <tr>
+            <td data-id="{{ post[0] }}"><a href="/post/{{ post[0] }}">{{ post[1] }}</a></td>
+            <td>{{ post[2]|truncate(20) }}</td>
+            <td>{{ post[3] }}</td>
+            <td>{{ post[4] }}</td>
+            <td data-id="{{ post[0] }}"><form action="/post/{{ post[0] }}/edit" method="get"><button type="submit">Edit</button></form>/<form action="/post/{{ post[0] }}/delete" method="post"><button>Delete</button></form></td>
+            </tr>
+            
+        {% endfor %}
+    
+       
+    </tr>
+
+</table>
+<form action="/new_post" method="get">
+    <button type="submit">New Post</button>
+</form>
+{% endblock %}

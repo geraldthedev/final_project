@@ -1,0 +1,16 @@
+{% extends "home.html" %}
+{% block title %}{{ fetch[1] }}{% endblock %}
+{% block head %}
+<link rel="stylesheet" href="/static/style.css" />
+{% endblock %}
+{% block content %}
+
+<h1>{{fetch[1]}}</h1>
+<h2>By:{{fetch[4]}}</h2>
+<h3>{{fetch[3]}}</h3>
+<form action="/post/{{ fetch[0] }}/edit" method="post">
+    <textarea name="post" id="post">{{fetch[2]}}</textarea>
+    <button type="submit">Update Post</button>
+</form>
+<a href="/dashboard">Back to home</a>   
+{% endblock %}
